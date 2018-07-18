@@ -1,0 +1,54 @@
+c:\Users\Kyle\Documents\python_stack\Django\Dojo Ninjas\main>python manage.py shell
+Python 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from apps.dojo_ninjas.models import *
+>>> Dojo.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: Dojo object>
+>>> Dojo.objects.get(id=1).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.get(id=2).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.get(id=3).delete()
+(1, {u'dojo_ninjas.Ninja': 0, u'dojo_ninjas.Dojo': 1})
+>>> Dojo.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+<Dojo: Dojo object>
+>>>  Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+  File "<console>", line 1
+    Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+    ^
+IndentationError: unexpected indent
+>>> Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+<Dojo: Dojo object>
+>>> Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+<Dojo: Dojo object>
+>>> Ninja.objects.create(first_name="Kyle", last_name="Hawkins", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Danica", last_name="Tomber", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Anthony", last_name="Noble", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Charlie", last_name="Chaplin", dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Arsene", last_name="Lupin", dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Goemon", last_name="Ishikawa", dojo=Dojo.objects.get(id=4))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Julius", last_name="Caesar", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Marcus", last_name="Brutus", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Mark", last_name="Antony", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Dojo.objects.first().ninjas.all()
+<QuerySet [<Ninja: Ninja object>, <Ninja: Ninja object>, <Ninja: Ninja object>]>
+>>> Ninja.objects.first().dojo
+<Dojo: Dojo object>
+>>> Dojo.objects.last().ninjas.all().values()
+<QuerySet [{u'dojo_id': 6, 'first_name': u'Julius', 'last_name': u'Caesar', u'id': 7}, {u'dojo_id': 6, 'first_name': u'Marcus', 'last_name': u'Brutus', u'id': 8}, {u'dojo_id': 6, 'first_name': u'Mark', 'last_name': u'Antony', u'id': 9}]>
+>>> Dojo.objects.first().ninjas.all().values()
+<QuerySet [{u'dojo_id': 4, 'first_name': u'Charlie', 'last_name': u'Chaplin', u'id': 4}, {u'dojo_id': 4, 'first_name': u'Arsene', 'last_name': u'Lupin', u'id': 5}, {u'dojo_id': 4, 'first_name': u'Goemon', 'last_name': u'Ishikawa', u'id': 6}]>
